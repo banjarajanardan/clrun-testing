@@ -1,8 +1,8 @@
 FROM python:3.8-slim-buster
-WORKDIR /weAnswer
-COPY . /weAnswer
+# WORKDIR /weAnswer
+# COPY . /weAnswer
 
-RUN pip3 install -r /app/requirements.txt
+RUN pip3 install -r weAnswer/app/requirements.txt
 
 
 EXPOSE $PORT
