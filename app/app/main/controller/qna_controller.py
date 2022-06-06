@@ -44,4 +44,4 @@ def get_answer():
 
 @qna_blueprint.route("/health/", methods=["GET"])
 def health():
-    return "Welcome to WeAnswer v1.0"
+    return make_response("Welcome to WeAnswer v2.0")
