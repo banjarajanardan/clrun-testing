@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 from loguru import logger
 
 from .main import qna_blueprint
 
 logger.debug("Starting Server")
 app = Flask(__name__)
+CORS(app)
 
 url_prefix = "/api/v1"
 
