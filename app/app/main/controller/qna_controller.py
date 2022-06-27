@@ -1,11 +1,7 @@
 from flask import Blueprint, request
-from json.decoder import JSONDecodeError
 
-from ..config import CONFIG
-from ..services.qna_service import find_answer
+from ..services.qna_service import find_answers
 from ..utils.auth import abort_json, login_required, make_response
-from ..utils.errors import ServiceUnavailable
-from ..utils.utils import send_post_request
 
 qna_blueprint = Blueprint("qna", __name__)
 
@@ -20,20 +16,7 @@ def get_answer():
 
         if not (text and questions):
             abort_json(400, "MISSING_INPUT", "text and query are required in json body")
-
-        # api_url = CONFIG.QNA_API
-        questions = questions.split(delimiter)
-        json_body = {"inputs": {"context": text}}
-        answers = []
-        for question in questions:
-            json_body["inputs"]["question"] = question
-            responses = find_answer(json_body)
-            try:
-                for response in responses:
-                    answers.append(response.json())
-            except (ServiceUnavailable, JSONDecodeError):
-                answers.append({"answer": "", "start": 0, "end": 0, "score": 0})
-
+        answers = find_answers(questions, text, delimiter)
     else:
         abort_json(
             400,
