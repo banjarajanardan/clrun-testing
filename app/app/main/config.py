@@ -16,8 +16,8 @@ class BaseConfig:
     ]
     QNA_APIs = [
         "https://api-inference.huggingface.co/models/deepset/minilm-uncased-squad2",
-        "https://api-inference.huggingface.co/models/valhalla/longformer-base-4096-finetuned-squadv1",
-        "https://api-inference.huggingface.co/models/aware-ai/roberta-large-squadv2"
+        # "https://api-inference.huggingface.co/models/valhalla/longformer-base-4096-finetuned-squadv1",
+        # "https://api-inference.huggingface.co/models/aware-ai/roberta-large-squadv2"
     ]
 
 

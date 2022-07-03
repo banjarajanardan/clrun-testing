@@ -53,3 +53,14 @@ def parallelize(n_jobs: int, func: Callable, params: List[dict]):
     job = joblib.Parallel(n_jobs=n_jobs, prefer="threads", require="sharedmem")
     res = job(joblib.delayed(func)(**param) for param in params)
     return res
+
+
+def str_to_bool(string: str) -> bool:
+    """
+        check if value can be converted to boolean type
+    """
+    true_values = ["1", "y", "yes", "true"]
+    if str(string).lower() in true_values:
+        return True
+    else:
+        return False
